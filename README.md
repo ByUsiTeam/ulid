@@ -3,6 +3,8 @@
 [![Gitee](https://img.shields.io/badge/Gitee-ByUsi-red)](https://gitee.com/byusi/ulid)
 [![GitHub](https://img.shields.io/badge/GitHub-ByUsi-blue)](https://github.com/ByUsiTeam/ulid)
 
+**[中文](README_zh-cn.md)** **English**
+
 Enhanced ULID implementation with 512-bit security features.
 
 ## Features

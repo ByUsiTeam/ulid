@@ -1,7 +1,7 @@
 from setuptools import setup, find_packages
 
 # 默认版本号（会被CI流程覆盖）
-DEFAULT_VERSION = "1.1.0" 
+DEFAULT_VERSION = "1.1.2" 
 
 setup(
     name="byusi-ulid",

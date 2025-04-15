@@ -1,0 +1,8 @@
+Metadata-Version: 2.4
+Name: byusi-ulid
+Version: 1.1.2
+License-File: LICENSE
+Requires-Dist: pybase62>=1.0.0
+Requires-Dist: crcmod>=1.7
+Dynamic: license-file
+Dynamic: requires-dist

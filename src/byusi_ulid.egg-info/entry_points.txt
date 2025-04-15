@@ -1,0 +1,2 @@
+[console_scripts]
+ulid-tool = ulid.cli:main
