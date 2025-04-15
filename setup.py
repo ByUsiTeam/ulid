@@ -9,7 +9,7 @@ setup(
     package_dir={"": "src"},
     packages=find_packages(where="src"),
     install_requires=[
-        'base62>=1.0.0',
+        'pybase62>=1.0.0',
         'crcmod>=1.7'
     ],
     entry_points={
