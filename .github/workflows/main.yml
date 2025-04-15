@@ -1,1 +1,50 @@
+# .github/workflows/release.yml
+name: Build and Release
 
+on:
+  release:
+    types: [published]
+
+jobs:
+  build-package:
+    runs-on: ubuntu-latest
+    env:
+      VERSION_PREFIX: "205601"
+      
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Setup Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: '3.x'
+
+    - name: Generate Build Version
+      id: version
+      run: |
+        # 生成北京时间戳 (UTC+8)
+        TS=$(TZ=Asia/Shanghai date +"%Y%m%d%H%M%S")
+        echo "build_version=$VERSION_PREFIX_$TS" >> $GITHUB_OUTPUT
+        echo "BUILD_VERSION=$VERSION_PREFIX.$TS" >> $GITHUB_ENV
+
+    - name: Build Package
+      run: |
+        # 动态修改setup.py中的版本号
+        sed -i "s/version=\".*\"/version=\"$BUILD_VERSION\"/" setup.py
+        pip install build
+        python -m build
+
+    - name: Rename Artifacts
+      run: |
+        # 重命名生成的文件
+        mv dist/*.tar.gz "dist/byusi_ulid-$BUILD_VERSION.tar.gz"
+        mv dist/*.whl "dist/byusi_ulid-$BUILD_VERSION-py3-none-any.whl"
+        echo "Final artifacts:"
+        ls -lh dist/
+
+    - name: Upload Release Assets
+      uses: softprops/action-gh-release@v1
+      with:
+        files: |
+          dist/byusi_ulid-$BUILD_VERSION*
