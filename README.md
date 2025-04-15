@@ -46,4 +46,4 @@ print(decoded.to_dict())  # May contain secrets!
 ```
 
 ## Easter Eggs
-Try including "ByUsi" in user data 😉
+Try including "BYUSI" in user data 😉
