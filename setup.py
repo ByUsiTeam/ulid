@@ -1,8 +1,11 @@
 from setuptools import setup, find_packages
 
+# 默认版本号（会被CI流程覆盖）
+DEFAULT_VERSION = "1.1.0" 
+
 setup(
     name="byusi-ulid",
-    version="1.1.0",
+    version=DEFAULT_VERSION,  # CI流程中会被sed替换
     package_dir={"": "src"},
     packages=find_packages(where="src"),
     install_requires=[
@@ -13,6 +16,5 @@ setup(
         'console_scripts': [
             'ulid-tool=ulid.cli:main',
         ],
-    },
-    python_requires='>=3.8',
+    }
 )
